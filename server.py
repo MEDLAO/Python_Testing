@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template, request, redirect, flash, url_for
+from flask import Flask, render_template, request, redirect, flash, url_for, abort
 
 
 def loadClubs():
@@ -31,7 +31,6 @@ def showSummary():
     club = [club for club in clubs if club['email'] == request.form['email']][0]
     return render_template('welcome.html', club=club, competitions=competitions)
 
-
 @app.errorhandler(Exception)
 def server_error(err):
     app.logger.exception(err)
@@ -54,9 +53,14 @@ def purchasePlaces():
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
-    competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
-    flash('Great-booking complete!')
+    if int(club['points']) >= 0 and placesRequired <= int(club['points']):
+        competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
+        club['points'] = int(club['points']) - placesRequired
+        flash('Great-booking complete!')
+    else:
+        flash('You do not have enough points')
     return render_template('welcome.html', club=club, competitions=competitions)
+
 
 
 # TODO: Add route for points display
