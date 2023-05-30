@@ -28,14 +28,18 @@ def index():
 
 @app.route('/showSummary', methods=['POST'])
 def showSummary():
-    club = [club for club in clubs if club['email'] == request.form['email']][0]
-    return render_template('welcome.html', club=club, competitions=competitions)
+    clbs = [club for club in clubs if club['email'] == request.form['email']]
+    if len(clbs) >= 1:
+        club = clbs[0]
+        return render_template('welcome.html', club=club, competitions=competitions)
+    else:
+        return "Unknown email", 422
 
 
 @app.errorhandler(Exception)
 def server_error(err):
     app.logger.exception(err)
-    return "Unknown email", 500
+    return "Sorry it was a server error", 500
 
 
 @app.route('/book/<competition>/<club>')
