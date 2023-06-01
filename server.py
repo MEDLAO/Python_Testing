@@ -62,8 +62,20 @@ def purchasePlaces():
     placesRequired = int(request.form['places'])
     if int(club['points']) >= 0 and placesRequired <= int(club['points']):
         if placesRequired <= 12:
-            competition['numberOfPlaces'] = int(competition['numberOfPlaces'])-placesRequired
+            competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
+            index_comp = competitions.index(competition)
+            competitions[index_comp]['numberOfPlaces'] = str(competition['numberOfPlaces'])
+            a_file = open('competitions.json', 'w')
+            json.dump({"competitions": competitions}, a_file, indent=4)
+            a_file.close()
+
             club['points'] = int(club['points']) - placesRequired
+            index_club = clubs.index(club)
+            clubs[index_club]['points'] = str(club['points'])
+            b_file = open('clubs.json', 'w')
+            json.dump({"clubs": clubs}, b_file, indent=4)
+            b_file.close()
+
             placesRequired += placesRequired
             flash('Great-booking complete!')
         else:
