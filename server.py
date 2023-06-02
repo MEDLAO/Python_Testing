@@ -32,6 +32,7 @@ def showSummary():
     club = [club for club in clubs if club['email'] == request.form['email']][0]
     return render_template('welcome.html', club=club, competitions=competitions)
 
+
 @app.errorhandler(Exception)
 def server_error(err):
     app.logger.exception(err)
@@ -83,6 +84,11 @@ def purchasePlaces():
     else:
         flash('You do not have enough points')
     return render_template('welcome.html', club=club, competitions=competitions)
+
+
+@app.route('/pointsDisplayBoard')
+def pointsDisplayBoard():
+    return render_template('pointsdisplayboard.html', clubs=clubs)
 
 
 # TODO: Add route for points display
