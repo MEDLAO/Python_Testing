@@ -1,6 +1,5 @@
-import json
 
-from server import clubs, competitions, purchasePlaces
+from server import clubs, competitions
 
 
 def test_index_should_status_code_ok(client):
