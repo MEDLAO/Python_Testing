@@ -1,4 +1,3 @@
-import json
 
 
 def test_book_should_status_code_ok(client, mock_clubs, mock_competitions):
