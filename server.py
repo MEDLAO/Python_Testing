@@ -18,6 +18,7 @@ def loadCompetitions():
 app = Flask(__name__)
 app.secret_key = 'something_special'
 
+
 competitions = loadCompetitions()
 clubs = loadClubs()
 
@@ -91,3 +92,7 @@ def purchasePlaces():
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))
+
+
+if __name__ == "__main__":
+    app.run()
