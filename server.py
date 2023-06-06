@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from flask import Flask, render_template, request, redirect, flash, url_for, abort
+from flask import Flask, render_template, request, redirect, flash, url_for
 
 
 def loadClubs():
