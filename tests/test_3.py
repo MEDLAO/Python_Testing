@@ -1,7 +1,3 @@
-import json
-
-from server import clubs, competitions, purchasePlaces
-
 
 def test_purchasePlaces_book_less_than_12_places(client, mock_clubs, mock_competitions):
     club = mock_clubs[0]['name']
