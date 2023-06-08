@@ -1,8 +1,3 @@
-import datetime
-import json
-
-from server import clubs, competitions, purchasePlaces
-
 
 def test_booking_places_future_competitions(client, mock_clubs, mock_competitions):
     club = mock_clubs[0]['name']
