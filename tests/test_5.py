@@ -3,12 +3,14 @@ import json
 from server import loadClubs, loadCompetitions
 from unittest import mock
 
+competitions = loadCompetitions('tests/competitions_test.json')
+clubs = loadClubs('tests/clubs_test.json')
 
-@mock.patch('server.COMPETITIONS_FILE', 'tests/competitions_test.json')
-@mock.patch('server.CLUBS_FILE', 'tests/clubs_test.json')
+
+@mock.patch('server.competitions', competitions)
+@mock.patch('server.clubs', clubs)
 def test_update_points(client):
-    competitions = loadCompetitions()
-    clubs = loadClubs()
+
     competition = competitions[0]['name']
     club = clubs[0]['name']
     places = 1

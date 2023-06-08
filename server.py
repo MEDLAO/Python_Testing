@@ -7,14 +7,14 @@ COMPETITIONS_FILE = "competitions.json"
 CLUBS_FILE = "clubs.json"
 
 
-def loadClubs():
-    with open(CLUBS_FILE) as c:
+def loadClubs(c_f):
+    with open(c_f) as c:
          listOfClubs = json.load(c)['clubs']
          return listOfClubs
 
 
-def loadCompetitions():
-    with open(COMPETITIONS_FILE) as comps:
+def loadCompetitions(comp_f):
+    with open(comp_f) as comps:
          listOfCompetitions = json.load(comps)['competitions']
          return listOfCompetitions
 
@@ -22,8 +22,8 @@ def loadCompetitions():
 app = Flask(__name__)
 app.secret_key = 'something_special'
 
-competitions = loadCompetitions()
-clubs = loadClubs()
+competitions = loadCompetitions(COMPETITIONS_FILE)
+clubs = loadClubs(CLUBS_FILE)
 
 
 @app.route('/')
@@ -66,8 +66,8 @@ def book(competition,club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
-    competitions = loadCompetitions()
-    clubs = loadClubs()
+    # competitions = loadCompetitions()
+    # clubs = loadClubs()
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
