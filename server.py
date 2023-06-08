@@ -2,15 +2,18 @@ from datetime import datetime
 import json
 from flask import Flask, render_template, request, redirect, flash, url_for, abort
 
+COMPETITIONS_FILE = "competitions.json"
+CLUBS_FILE = "clubs.json"
+
 
 def loadClubs():
-    with open('clubs.json') as c:
+    with open(CLUBS_FILE) as c:
          listOfClubs = json.load(c)['clubs']
          return listOfClubs
 
 
 def loadCompetitions():
-    with open('competitions.json') as comps:
+    with open(COMPETITIONS_FILE) as comps:
          listOfCompetitions = json.load(comps)['competitions']
          return listOfCompetitions
 
@@ -58,6 +61,8 @@ def book(competition,club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
+    competitions = loadCompetitions()
+    clubs = loadClubs()
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
@@ -66,14 +71,14 @@ def purchasePlaces():
             competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
             index_comp = competitions.index(competition)
             competitions[index_comp]['numberOfPlaces'] = str(competition['numberOfPlaces'])
-            a_file = open('competitions.json', 'w')
+            a_file = open(COMPETITIONS_FILE, 'w')
             json.dump({"competitions": competitions}, a_file, indent=4)
             a_file.close()
 
             club['points'] = int(club['points']) - placesRequired
             index_club = clubs.index(club)
             clubs[index_club]['points'] = str(club['points'])
-            b_file = open('clubs.json', 'w')
+            b_file = open(CLUBS_FILE, 'w')
             json.dump({"clubs": clubs}, b_file, indent=4)
             b_file.close()
 

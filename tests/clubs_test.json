@@ -1,19 +1,19 @@
 {
     "clubs": [
         {
-            "name": "Test Club 1",
-            "email": "club1@test.com",
-            "points": "15"
+            "name": "Simply Lift",
+            "email": "john@simplylift.co",
+            "points": "3"
         },
         {
-            "name": "Test Club 2",
-            "email": "club2@test.com",
-            "points": "25"
+            "name": "Iron Temple",
+            "email": "admin@irontemple.com",
+            "points": "4"
         },
         {
-            "name": "Test Club 3",
-            "email": "club3@test.com",
-            "points": "2"
+            "name": "She Lifts",
+            "email": "kate@shelifts.co.uk",
+            "points": "12"
         }
     ]
 }
