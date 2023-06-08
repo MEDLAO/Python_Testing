@@ -1,6 +1,7 @@
+import os
 from datetime import datetime
 import json
-from flask import Flask, render_template, request, redirect, flash, url_for
+from flask import Flask, render_template, request, redirect, flash, url_for, send_from_directory
 
 
 def loadClubs():
@@ -97,3 +98,8 @@ def pointsDisplayBoard():
 @app.route('/logout')
 def logout():
     return redirect(url_for('index'))
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
