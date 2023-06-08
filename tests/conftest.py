@@ -50,7 +50,7 @@ def mock_competitions(mocker):
         },
         {
             "name": "Test Competition 2",
-            "date": "2024-03-27 10:00:00",
+            "date": "2023-03-27 10:00:00",
             "numberOfPlaces": "13"
         },
         {
