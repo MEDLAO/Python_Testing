@@ -1,5 +1,5 @@
 
-def test_purchasePlaces_book_less_than_12_places(client, mock_clubs, mock_competitions):
+def test_purchasePlaces_book_less_than_12_places(client, mock_clubs, mock_competitions, write_to_file_mock):
     club = mock_clubs[0]['name']
     competition = mock_competitions[0]['name']
     places = 12
@@ -8,7 +8,7 @@ def test_purchasePlaces_book_less_than_12_places(client, mock_clubs, mock_compet
     assert "Great-booking complete!" in response.data.decode()
 
 
-def test_purchasePlaces_cannot_book_more_than_12_places(client, mock_clubs, mock_competitions):
+def test_purchasePlaces_cannot_book_more_than_12_places(client, mock_clubs, mock_competitions, write_to_file_mock):
     club = mock_clubs[0]['name']
     competition = mock_competitions[0]['name']
     places = 13

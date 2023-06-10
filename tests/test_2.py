@@ -1,13 +1,13 @@
 
 
-def test_book_should_status_code_ok(client, mock_clubs, mock_competitions):
+def test_book_should_status_code_ok(client, mock_clubs, mock_competitions, write_to_file_mock):
     club = mock_clubs[0]['name']
     competition = mock_competitions[0]['name']
     response = client.get(f'/book/{competition}/{club}')
     assert response.status_code == 200
 
 
-def test_purchasePlaces_should_booked_places_less_than_allowed_points(client, mock_clubs, mock_competitions):
+def test_purchasePlaces_should_booked_places_less_than_allowed_points(client, mock_clubs, mock_competitions, write_to_file_mock):
     club = mock_clubs[0]['name']
     competition = mock_competitions[0]['name']
     places = 10
@@ -17,7 +17,7 @@ def test_purchasePlaces_should_booked_places_less_than_allowed_points(client, mo
     assert "Great-booking complete!" in response.data.decode()
 
 
-def test_purchasePlaces_not_enough_points(client, mock_clubs, mock_competitions):
+def test_purchasePlaces_not_enough_points(client, mock_clubs, mock_competitions, write_to_file_mock):
     club = mock_clubs[0]['name']
     competition = mock_competitions[0]['name']
     places = 41

@@ -66,3 +66,13 @@ def mock_competitions(mocker):
     ]
     mocked = mocker.patch.object(server, 'competitions', competitions)
     yield mocked
+
+
+@pytest.fixture
+def write_to_file_mock(mocker):
+    # Patching the function with a mock
+    def write_nothing(*args, **kwargs):
+        return None
+
+    mocked = mocker.patch.object(server, 'write_to_file', write_nothing)
+    yield mocked
