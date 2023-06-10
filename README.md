@@ -43,9 +43,13 @@
     * clubs.json - list of clubs with relevant information. You can look here to see what email addresses the app will accept for login.
 
 5. Testing
+   1. To run the unit tests :
+      >    $ <b> pytest </b>
+   2. To generate an HTML Pytest coverage report :
+      >    $ <b> pytest --cov=. --cov-report html</b>
 
-    You are free to use whatever testing framework you like-the main thing is that you can show what tests you are using.
+   3. Then, open the htmlcov/index.html file with a browser.
 
-    We also like to show how well we're testing, so there's a module called 
-    [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) you should add to your project.
-
+   4. To run the performance tests with Locust :
+       1. >    $ <b> locust -f tests/performance_tests/locustfile.py</b>
+       2. Run the flask server simultaneously on another terminal

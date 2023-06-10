@@ -7,7 +7,7 @@ def test_book_should_status_code_ok(client, mock_clubs, mock_competitions, write
     assert response.status_code == 200
 
 
-def test_purchasePlaces_should_booked_places_less_than_allowed_points(client, mock_clubs, mock_competitions, write_to_file_mock):
+def test_purchasePlaces_booked_places_less_than_allowed_points(client, mock_clubs, mock_competitions, write_to_file_mock):
     club = mock_clubs[0]['name']
     competition = mock_competitions[0]['name']
     places = 10
