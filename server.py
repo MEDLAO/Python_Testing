@@ -38,7 +38,7 @@ def showSummary():
         club = clbs[0]
         return render_template('welcome.html', club=club, competitions=competitions)
     else:
-        return "Unknown email", 422
+        return "Unknown email"
 
 
 @app.errorhandler(Exception)
@@ -66,8 +66,6 @@ def book(competition,club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchasePlaces():
-    # competitions = loadCompetitions()
-    # clubs = loadClubs()
     competition = [c for c in competitions if c['name'] == request.form['competition']][0]
     club = [c for c in clubs if c['name'] == request.form['club']][0]
     placesRequired = int(request.form['places'])
@@ -99,9 +97,6 @@ def purchasePlaces():
 @app.route('/pointsDisplayBoard')
 def pointsDisplayBoard():
     return render_template('pointsdisplayboard.html', clubs=clubs)
-
-
-# TODO: Add route for points display
 
 
 @app.route('/logout')
