@@ -4,7 +4,7 @@ from server import competitions, clubs
 
 class ProjectPerfTest(HttpUser):
 
-    wait_time = between(3, 10)
+    wait_time = between(1, 2)
 
     def on_start(self):
         self.client.get('/')
