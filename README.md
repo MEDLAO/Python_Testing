@@ -1,5 +1,12 @@
 # gudlift-registration
 
+<p>
+  <img src="static/gudlft-specs.png" width="250" height="180"/>
+  <img src="static/gudlft-tdd.png" width="250" height="180"/>
+  <img src="static/gudlft-issues.png" width="250" height="180"/>
+  <img src="static/gudlft-coverage-report.png" width="250" height="180"/>
+</p>
+
 1. Why
 
 
