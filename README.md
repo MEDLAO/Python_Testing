@@ -1,10 +1,10 @@
 # gudlift-registration
 
-<p>
-  <img src="pictures/gudlft-specs.png" width="240" height="180"/>
-  <img src="pictures/gudlft-tdd.png" width="240" height="180"/>
-  <img src="pictures/gudlft-issues.png" width="240" height="180"/>
-  <img src="pictures/gudlft-coverage-report.png" width="240" height="180"/>
+<p align="center">
+  <img src="pictures/gudlft-specs.png" width="230" height="180"/>
+  <img src="pictures/gudlft-tdd.png" width="230" height="180"/>
+  <img src="pictures/gudlft-issues.png" width="230" height="180"/>
+  <img src="pictures/gudlft-coverage-report.png" width="230" height="180"/>
 </p>
 
 1. Why
